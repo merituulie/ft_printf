@@ -1,22 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/29 19:03:06 by meskelin          #+#    #+#             */
-/*   Updated: 2022/11/29 19:03:06 by meskelin         ###   ########.fr       */
+/*   Created: 2022/11/29 19:58:14 by meskelin          #+#    #+#             */
+/*   Updated: 2022/11/29 19:58:14 by meskelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-#include <stdarg.h>
+int	ft_putchar(int c)
+{
+	write(1, &c, 1);
+	return (1);
+}
 
-int	ft_putchr(int c);
-int	ft_printstr(const char *str);
-int	ft_printf(const char *str, ...);
+static int	ft_putstr(const char *str)
+{
+	int count;
 
-#endif
+	count = 0;
+	while (*str)
+	{
+		ft_putchar(*str);
+		str++;
+		count++;
+	}
+	return (count);
+}
+
+int	ft_printstr(const char *str)
+{
+	if (!str)
+	{
+		ft_putstr("(null)");
+		return (6);
+	}
+	return (ft_putstr(str));
+}
