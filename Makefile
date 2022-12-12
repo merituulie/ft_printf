@@ -6,7 +6,7 @@
 #    By: meskelin <meskelin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 18:49:30 by meskelin          #+#    #+#              #
-#    Updated: 2022/12/09 17:37:18 by meskelin         ###   ########.fr        #
+#    Updated: 2022/12/12 12:32:48 by meskelin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,10 +35,13 @@ $(NAME):
 	ar rc $(NAME) $(SRCSO)
 	ranlib $(NAME)
 
+.PHONY: clean
 clean:
 	rm -f $(SRCSO)
 
+.PHONY: fclean
 fclean: clean
 	rm -f $(NAME)
 
+.PHONY: re
 re: fclean all
